@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Welcome from './Welcome';
+import Counter from './counter';
+import ListAndKeys from './ListAndKeys';
+import UseEffectPractice from './useEffectPractice';
+import PracticeRef from './useRedPractice'; 
+import EventHandling from './eventHandlingPractice';
+
+function Header(){
+  return <h1>This is Header</h1>
+}
+
+function Footer(){
+  return <h1>This is Footer</h1>
+} //composition Practice
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return(
+    <div>
+      <Header />
+      <Welcome name="John" />
+      <Counter /> 
+      <ListAndKeys />
+      <UseEffectPractice />
+      <PracticeRef />
+      <EventHandling />
+      <Footer /> 
     </div>
-  );
+    
+);
+
 }
+
 
 export default App;
