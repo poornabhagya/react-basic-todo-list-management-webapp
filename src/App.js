@@ -16,9 +16,27 @@ function App() {
     <div>
       <h1>Todo Management App</h1>
       <TaskForm onAddTask={handleAddTask} />
+      <div>
+        {tasks.map((task)=>(
+        <div key={task.id} 
+          style={{
+            border: "1px solid black",
+            padding: "10px",
+            margin: "10px 0",
+            backgroundColor: task.priority === "immediate" ? "salmon" : "white",
+            textDecoration: task.isCompleted ? "line-through" : "none"
+          }}
+        >
+          <h3>{task.name} ({task.priority})</h3>
+          <p>{task.description}</p>
+          <p>Priority:{task.priority}</p>
+          <button onClick={() => handleCompleteTask(task.id)}>Complete</button>
+          <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+      </div>
+      ))}</div>
     </div>
     
-);
+  );
 
 }
 
