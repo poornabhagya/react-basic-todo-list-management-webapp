@@ -24,6 +24,11 @@ function App() {
     setTasks(updateTasks);
   }
 
+  function handleDeleteTask(taskId) {
+    const updateTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(updateTasks);
+  }
+
   return(
     <div>
       <h1>Todo Management App</h1>
