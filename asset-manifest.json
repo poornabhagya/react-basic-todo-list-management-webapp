@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/poornabhagya/react-basic-todo-list-management-webapp/static/css/main.107c2965.css",
+    "main.js": "/poornabhagya/react-basic-todo-list-management-webapp/static/js/main.18cab533.js",
+    "static/js/453.96453769.chunk.js": "/poornabhagya/react-basic-todo-list-management-webapp/static/js/453.96453769.chunk.js",
+    "index.html": "/poornabhagya/react-basic-todo-list-management-webapp/index.html",
+    "main.107c2965.css.map": "/poornabhagya/react-basic-todo-list-management-webapp/static/css/main.107c2965.css.map",
+    "main.18cab533.js.map": "/poornabhagya/react-basic-todo-list-management-webapp/static/js/main.18cab533.js.map",
+    "453.96453769.chunk.js.map": "/poornabhagya/react-basic-todo-list-management-webapp/static/js/453.96453769.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.107c2965.css",
+    "static/js/main.18cab533.js"
+  ]
+}
