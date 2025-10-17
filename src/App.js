@@ -12,6 +12,18 @@ function App() {
 
   }
 
+  function handleCompleteTask(taskId) {
+    const updateTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return {...task, isCompleted: true}
+      }else {
+        return task;
+      }
+    })
+
+    setTasks(updateTasks);
+  }
+
   return(
     <div>
       <h1>Todo Management App</h1>
@@ -29,7 +41,6 @@ function App() {
         >
           <h3>{task.name} ({task.priority})</h3>
           <p>{task.description}</p>
-          <p>Priority:{task.priority}</p>
           <button onClick={() => handleCompleteTask(task.id)}>Complete</button>
           <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
       </div>
