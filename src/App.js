@@ -1,31 +1,21 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import './App.css';
-import Welcome from './Welcome';
-import Counter from './counter';
-import ListAndKeys from './ListAndKeys';
-import UseEffectPractice from './useEffectPractice';
-import PracticeRef from './useRedPractice'; 
-import EventHandling from './eventHandlingPractice';
-
-function Header(){
-  return <h1>This is Header</h1>
-}
-
-function Footer(){
-  return <h1>This is Footer</h1>
-} //composition Practice
+import TaskForm from './components/TaskForm';
 
 function App() {
+
+  const [tasks, setTasks] = useState([]);
+
+  function handleAddTask(newTask) {
+    setTasks([...tasks, newTask]);
+    
+
+  }
+
   return(
     <div>
-      <Header />
-      <Welcome name="John" />
-      <Counter /> 
-      <ListAndKeys />
-      <UseEffectPractice />
-      <PracticeRef />
-      <EventHandling />
-      <Footer /> 
+      <h1>Todo Management App</h1>
+      <TaskForm onAddTask={handleAddTask} />
     </div>
     
 );
