@@ -1,71 +1,95 @@
-import React,{ useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import TaskForm from './TaskForm';
+import TaskForm from './components/TaskForm';
+import './TaskStyles.css';
+import { CheckCircle, Trash2 } from "lucide-react";
 
 function App() {
-
   const [tasks, setTasks] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
+  // Load tasks from localStorage on mount
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (savedTasks) setTasks(savedTasks);
+  }, []);
+
+  // Save to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-  useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (savedTasks) {
-      setTasks(savedTasks);
-    }
-  }, []);
-
   function handleAddTask(newTask) {
     setTasks([...tasks, newTask]);
-    
-
+    setShowForm(false);
   }
 
   function handleCompleteTask(taskId) {
-    const updateTasks = tasks.map(task => {
-      if (task.id === taskId) {
-        return {...task, isCompleted: true}
-      }else {
-        return task;
-      }
-    })
-
-    setTasks(updateTasks);
+    const updatedTasks = tasks.map(task =>
+      task.id === taskId ? { ...task, isCompleted: true } : task
+    );
+    setTasks(updatedTasks);
   }
 
   function handleDeleteTask(taskId) {
-    const updateTasks = tasks.filter(task => task.id !== taskId);
-    setTasks(updateTasks);
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(updatedTasks);
   }
 
-  return(
-    <div>
-      <h1>Todo Management App</h1>
-      <TaskForm onAddTask={handleAddTask} />
-      <div>
-        {tasks.map((task)=>(
-        <div key={task.id} 
-          style={{
-            border: "1px solid black",
-            padding: "10px",
-            margin: "10px 0",
-            backgroundColor: task.priority === "immediate" ? "salmon" : "white",
-            textDecoration: task.isCompleted ? "line-through" : "none"
-          }}
-        >
-          <h3>{task.name} ({task.priority})</h3>
-          <p>{task.description}</p>
-          <button onClick={() => handleCompleteTask(task.id)}>Complete</button>
-          <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+  return (
+    <div className="app-container">
+      <header className="app-header">
+        <h1>TaskMaster</h1>
+        <button className="new-task-btn" onClick={() => setShowForm(true)}>
+          + Add New Task
+        </button>
+      </header>
+
+      {/* Modal for task form */}
+      {showForm && (
+        <div className="modal-overlay">
+          <TaskForm onAddTask={handleAddTask} onClose={() => setShowForm(false)} />
+        </div>
+      )}
+
+
+      <div className="task-container">
+        {tasks.length === 0 ? (
+          <p className="no-tasks">No tasks yet. Click “Add New Task” to get started!</p>
+        ) : (
+          tasks.map(task => (
+            <div
+              key={task.id}
+              className={`task-card task-${task.priority} ${task.isCompleted ? 'task-completed' : ''}`}
+            >
+              <div className="task-header">
+                <h3 className="task-title">{task.name}</h3>
+                <div className="task-icons">
+                  <button
+                    className="icon-btn complete-btn"
+                    onClick={() => handleCompleteTask(task.id)}
+                    title="Mark as Complete"
+                  >
+                    <CheckCircle size={20} />
+                  </button>
+                  <button
+                    className="icon-btn delete-btn"
+                    onClick={() => handleDeleteTask(task.id)}
+                    title="Delete Task"
+                  >
+                    <Trash2 size={20} />
+                  </button>
+                </div>
+              </div>
+              <p className="task-desc">{task.description}</p>
+              <span className={`priority-badge ${task.priority}`}>{task.priority}</span>
+
+            </div>
+          ))
+        )}
       </div>
-      ))}</div>
     </div>
-    
   );
-
 }
-
 
 export default App;

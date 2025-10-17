@@ -1,0 +1,69 @@
+.task-card {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task-immediate {
+  border-left: 6px solid #e74c3c; /* Red for Immediate */
+}
+
+.task-medium {
+  border-left: 6px solid #f1c40f; /* Yellow for Medium */
+}
+
+.task-slow {
+  border-left: 6px solid #2ecc71; /* Green for Slow */
+}
+
+.task-completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+}
+
+.task-card p {
+  margin: 0 0 12px 0;
+  color: #555;
+}
+
+.task-card button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.task-card button:first-of-type {
+  background-color: #2ecc71; /* Complete */
+  color: #fff;
+}
+
+.task-card button:first-of-type:hover {
+  background-color: #27ae60;
+}
+
+.task-card button:last-of-type {
+  background-color: #e74c3c; /* Delete */
+  color: #fff;
+}
+
+.task-card button:last-of-type:hover {
+  background-color: #c0392b;
+}

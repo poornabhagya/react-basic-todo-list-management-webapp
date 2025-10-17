@@ -1,38 +1,205 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* App container */
+.app-container {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7fa;
   min-height: 100vh;
+  padding: 40px;
+  color: #333;
+}
+
+/* Header */
+.app-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Add new task button */
+.new-task-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.new-task-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Task list area */
+.task-container {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Task cards */
+.task-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.task-card:hover {
+  transform: scale(1.02);
+}
+
+/* Task priority color accents */
+.task-immediate {
+  border-left: 6px solid #ff5c5c;
+}
+
+.task-medium {
+  border-left: 6px solid #ffa534;
+}
+
+.task-slow {
+  border-left: 6px solid #5cc86f;
+}
+
+/* Completed task */
+.task-completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Buttons in task */
+.task-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.task-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.task-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: #f0f2f5;
+  transform: scale(1.1);
+}
+
+.complete-btn svg {
+  color: #2ecc71;
+}
+
+.complete-btn:hover svg {
+  color: #27ae60;
+}
+
+.delete-btn svg {
+  color: #e74c3c;
+}
+
+.delete-btn:hover svg {
+  color: #c0392b;
+}
+
+.task-desc {
+  margin-top: 8px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.priority-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.priority-badge.immediate {
+  background-color: #ffe5e5;
+  color: #e74c3c;
+}
+
+.priority-badge.medium {
+  background-color: #e6f0ff;
+  color: #007bff;
+}
+
+.priority-badge.slow {
+  background-color: #e8f5e9;
+  color: #2ecc71;
+}
+
+.task-card.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+
+/* Modal overlay and box */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  z-index: 10;
 }
 
-.App-link {
-  color: #61dafb;
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 400px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.no-tasks {
+  text-align: center;
+  color: #777;
 }
